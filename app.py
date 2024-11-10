@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 import time
+import openai
 from typing import List, Tuple
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
@@ -32,6 +33,12 @@ st.set_page_config(
 @st.cache_resource
 def initialize_chain():
     """Initialize the RAG chain and its components"""
+
+    # Ensure the persist directory exists
+    persist_directory = "chroma_data"
+    if not os.path.exists(persist_directory):
+        os.makedirs(persist_directory)
+
     # Instantiate embeddings model
     embeddings_model = OpenAIEmbeddings(
         api_key=OPENAI_API_KEY, 
@@ -54,6 +61,16 @@ def initialize_chain():
         embedding_function=embeddings_model
     )
     
+    #Load chroma from disk with error handling
+    try:
+        vectorstore = Chroma(
+            persist_directory=persist_directory, 
+            embedding_function=embeddings_model
+        )
+    except Exception as e:
+        st.error(f"Failed to initialize Chroma: {e}")
+        return None
+
     # Set up the vectorstore retriever
     retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
     
