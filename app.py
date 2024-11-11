@@ -153,7 +153,7 @@ def initialize_ui():
     """Initialize the UI components"""
     st.title("🎵 Spotify Google Store Review Analysis Bot")
     st.markdown("""
-    Welcome to the Music App Review Analysis Assistant! Ask questions about user reviews and get insights
+    Welcome to the Spotify Google Store Review Analysis Assistant! Ask questions about user reviews and get insights
     about what users like, dislike, and compare about the music streaming application.
     """)
     
