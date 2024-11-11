@@ -82,35 +82,35 @@ This project utilizes the following frameworks and libraries:
 
 ## Objective 1: Data Preprocessing and Vectorized Database Creation
 
-### Steps:
-1. **Import Libraries and Set Up Environment**:
+### Steps
+1. **Import Libraries and Set Up Environment**
     - Import necessary libraries and set up environment variables. Check for CUDA support if GPU acceleration is needed.
-2. **Load and Preprocess the Data**:
+2. **Load and Preprocess the Data**
     - Load the dataset and select relevant columns.
     - Convert data types as needed and perform any necessary preprocessing, such as handling missing values.
-3. **Undersample the Data**:
+3. **Undersample the Data**
     - To manage the large dataset, perform undersampling by selecting a subset of reviews for each rating level to ensure balanced representation.
-4. **Tag Reviews**:
+4. **Tag Reviews**
     - Add tags based on content to enhance search relevance. Tags may include sentiment (positive, negative), feature mentions (UI, music variety), and comparisons with competitors (e.g., Pandora).
-5. **Create Embeddings and Split Documents**:
+5. **Create Embeddings and Split Documents**
     - Use OpenAI embeddings to vectorize the reviews.
     - Split longer reviews into manageable chunks for improved retrieval.
-6. **Create and Persist the Vector Store**:
+6. **Create and Persist the Vector Store**
     - Store the vectorized data in Chroma for efficient retrieval.
 
 ## Objective 2: RAG Chain Creation
 
-### Steps:
-1. **Import Libraries and Set Up Environment**:
+### Steps
+1. **Import Libraries and Set Up Environment**
     - Import necessary libraries and set up environment variables. Check for CUDA support if GPU acceleration is needed.
-2. **Create Basic RAG Chain**:
+2. **Create Basic RAG Chain**
     - Initialize the embeddings model and chat model.
     - Load the vector store and set up the retriever.
-3. **Test the Retriever**:
+3. **Test the Retriever**
     - Test the retriever by running a sample query to see if it pulls relevant data from the vector store..
-4. **Test the RAG Chain**:
+4. **Test the RAG Chain**
     - Define a system prompt template and create the RAG chain with a pipeline that combines the retriever, a prompt template, and the chat model.
-5. **Create Gradio Answer Bot**:
+5. **Create Gradio Answer Bot**
     - Set up a simple chatbot interface using Gradio to interact with the RAG chain.
 
 ## Objective 3: Build a Chatbot UI
@@ -132,7 +132,9 @@ The bot uses a RAG chain that combines retrieval from a Chroma vector store with
 3. The chatbot retrieves relevant reviews and provides summarized insights based on the vectorized data.
 
 ## Screenshots
-
+![Screenshot of Spotify Review Analysis Bot part 1](assets/images/image1.png)
+![Screenshot of Spotify Review Analysis Bot part 2](assets/images/image2.png)
+[Demonstration of Spotify Review Analysis Bot](assets/videos/demo.mp4)
 
 ## Acknowledgments
 1. **LangChain** for data connection and embedding management.
